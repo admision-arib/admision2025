@@ -37,14 +37,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 #DEBUG = env.bool('DEBUG')
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-#ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+
 ALLOWED_HOSTS = ["*"]
 
-
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.getenv("GOOGLE_KEY_CONTENT")
-
-with open('client_secrets.json', 'w') as f:
-    f.write(GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE)
 
 # Application definition
 
@@ -159,27 +154,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#TAILWIND_APP_NAME = 'theme'
-
-# Indica que se usará Google Drive como almacenamiento por defecto para archivos
-#DEFAULT_FILE_STORAGE = 'gdstorage.storage.GoogleDriveStorage'
-#DEFAULT_FILE_STORAGE = 'gdstorage.storage.GoogleDriveStorage'
-# Ruta al archivo JSON de credenciales obtenido de Google Cloud Console.
-# Este archivo debe contener la clave de la cuenta de servicio con permisos para acceder a la API de Google Drive.
-
-# ID de la carpeta en Google Drive donde se subirán los archivos.
-# Para obtener este ID, abre la carpeta en Google Drive y copia el valor de la URL.
-
-# Configura la carpeta de Google Drive (puedes usar el ID de la carpeta)
-#GDSTORAGE_ROOT = '1K1cGr6Us3nfAHi4U4km1g5DqH75PgINa'
-
-# Ruta al archivo de credenciales JSON obtenido de Google Cloud Console
-#GDSTORAGE_JSON_KEY_FILE = 'client_secrets.json'
-
-#GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
-#GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
-
-#GOOGLE_DRIVE_STORAGE_FOLDER_ID = env('GOOGLE_DRIVE_STORAGE_FOLDER_ID')
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
 
 # Configuración de Email
 EMAIL_BACKEND = config('EMAIL_BACKEND')
