@@ -40,6 +40,12 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 #ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 ALLOWED_HOSTS = ["*"]
 
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.getenv("GOOGLE_KEY_CONTENT")
+
+with open('client_secrets.json', 'w') as f:
+    f.write(GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -169,7 +175,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Ruta al archivo de credenciales JSON obtenido de Google Cloud Console
 #GDSTORAGE_JSON_KEY_FILE = 'client_secrets.json'
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
+
+#GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
 #GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
 
 #GOOGLE_DRIVE_STORAGE_FOLDER_ID = env('GOOGLE_DRIVE_STORAGE_FOLDER_ID')
