@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto my-8 px-4">
+    <h2 class="text-2xl font-bold">Cuota de Almacenamiento en Google Drive</h2>
+    <ul>
+        <li>Total (bytes): {{ limit }}</li>
+        <li>Usado (bytes): {{ usage }}</li>
+        <li>Restante (bytes): {{ remaining }}</li>
+    </ul>
+</div>
+{% endblock %}

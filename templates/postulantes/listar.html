@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Listado de Postulantes Registrados</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">DNI</th>
+        <th scope="col">Apellido Paterno</th>
+        <th scope="col">Apellido Materno</th>
+        <th scope="col">Nombres</th>
+        <th scope="col">Voucher Link</th>
+        <th scope="col">ficha</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for postulante in postulantes %}
+      <tr>
+        <th scope="row">{{postulante.dni}}</th>
+        <td>{{postulante.apellido_paterno}}</td>
+        <td>{{postulante.apellido_materno}}</td>
+        <td>{{postulante.nombres}}</td>
+        <td>{{postulante.recibo_file.url}}</td>
+        <td> <form action="{% url 'postulantes:generar_pdf' postulante.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-primary">Generar ficha PDF</button>
+        </form></td>
+        </tr>
+      
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

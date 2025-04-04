@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Formulario de Inscripción{% endblock title %}
+
+{% block content %}
+<!-- Estilos personalizados para inputs y selects -->
+<style>
+  input, select, textarea {
+    background-color: #f3f4f6; /* bg-gray-100 */
+    border: 1px solid #d1d5db; /* border-gray-300 */
+    border-radius: 0.375rem; /* rounded-md */
+    padding: 0.5rem 0.75rem; /* py-2 px-3 */
+    color: #374151; /* text-gray-700 */
+    outline: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: #3b82f6; /* border-blue-500 */
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3); /* focus:ring-2 focus:ring-blue-500 */
+  }
+</style>
+
+<div class="container mx-auto my-8 px-4">
+  <div class="bg-white shadow rounded-lg overflow-hidden">
+    <!-- Encabezado -->
+    <div class="border-b px-4 py-4 bg-blue-50">
+      <div class="flex justify-center">
+        <img class="px-2 py-2" src="https://iestparib.edu.pe/wp-content/uploads/2023/08/cropped-logoweb.jpg" alt="Logo IESTP ARIB">
+      </div>
+      <h3 class="text-center text-2xl font-semibold mt-2 text-blue-800">Formulario de Inscripción</h3>
+    </div>
+    <!-- Cuerpo del formulario -->
+    <div class="p-6">
+      <form action="" method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+        
+        <!-- Datos Personales -->
+        <h3 class="text-xl font-semibold text-blue-700">Datos Personales</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="{{ form.nombres.id_for_label }}" class="block text-sm font-medium text-gray-700">Nombres</label>
+            {{ form.nombres }}
+            {% if form.nombres.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.nombres.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.apellido_paterno.id_for_label }}" class="block text-sm font-medium text-gray-700">Apellido Paterno</label>
+            {{ form.apellido_paterno }}
+            {% if form.apellido_paterno.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.apellido_paterno.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.apellido_materno.id_for_label }}" class="block text-sm font-medium text-gray-700">Apellido Materno</label>
+            {{ form.apellido_materno }}
+            {% if form.apellido_materno.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.apellido_materno.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="{{ form.dni.id_for_label }}" class="block text-sm font-medium text-gray-700">DNI/Passport</label>
+            {{ form.dni }}
+            {% if form.dni.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.dni.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.correo.id_for_label }}" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+            {{ form.correo }}
+            {% if form.correo.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.correo.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.genero.id_for_label }}" class="block text-sm font-medium text-gray-700">Género</label>
+            {{ form.genero }}
+            {% if form.genero.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.genero.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="{{ form.celular.id_for_label }}" class="block text-sm font-medium text-gray-700">Celular</label>
+            {{ form.celular }}
+            {% if form.celular.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.celular.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.fecha_nacimiento.id_for_label }}" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+            {# Sugerencia: para agregar un placeholder, es recomendable personalizar el widget en el Formulario, por ejemplo: #}
+            {# fecha_nacimiento = forms.DateField(widget=forms.DateInput(attrs={'placeholder': 'dd/mm/aaaa', 'type': 'date', 'class': '...'})) #}
+            {{ form.fecha_nacimiento }}
+            {% if form.fecha_nacimiento.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.fecha_nacimiento.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <!-- Lugar de Nacimiento -->
+        <h3 class="text-xl font-semibold text-blue-700">Lugar de Nacimiento</h3>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <label for="{{ form.lugar_nacimiento.id_for_label }}" class="block text-sm font-medium text-gray-700">Lugar</label>
+            {{ form.lugar_nacimiento }}
+            {% if form.lugar_nacimiento.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.lugar_nacimiento.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.lugar_nacimiento_distrito.id_for_label }}" class="block text-sm font-medium text-gray-700">Distrito</label>
+            {{ form.lugar_nacimiento_distrito }}
+            {% if form.lugar_nacimiento_distrito.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.lugar_nacimiento_distrito.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.lugar_nacimiento_provincia.id_for_label }}" class="block text-sm font-medium text-gray-700">Provincia</label>
+            {{ form.lugar_nacimiento_provincia }}
+            {% if form.lugar_nacimiento_provincia.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.lugar_nacimiento_provincia.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.lugar_nacimiento_departamento.id_for_label }}" class="block text-sm font-medium text-gray-700">Departamento</label>
+            {{ form.lugar_nacimiento_departamento }}
+            {% if form.lugar_nacimiento_departamento.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.lugar_nacimiento_departamento.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <!-- Datos del Tutor -->
+        <h3 class="text-xl font-semibold text-blue-700">Datos del Tutor (si es menor de edad)</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="{{ form.tutor_apellidos.id_for_label }}" class="block text-sm font-medium text-gray-700">Apellido del Tutor</label>
+            {{ form.tutor_apellidos }}
+            {% if form.tutor_apellidos.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.tutor_apellidos.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.tutor_nombres.id_for_label }}" class="block text-sm font-medium text-gray-700">Nombre del Tutor</label>
+            {{ form.tutor_nombres }}
+            {% if form.tutor_nombres.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.tutor_nombres.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.tutor_parentesco.id_for_label }}" class="block text-sm font-medium text-gray-700">Parentesco</label>
+            {{ form.tutor_parentesco }}
+            {% if form.tutor_parentesco.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.tutor_parentesco.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <!-- Información Académica -->
+        <h3 class="text-xl font-semibold text-blue-700">Información Académica</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="{{ form.nombre_ies.id_for_label }}" class="block text-sm font-medium text-gray-700">Nombre de la IES</label>
+            {{ form.nombre_ies }}
+            {% if form.nombre_ies.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.nombre_ies.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.tipo_institucion.id_for_label }}" class="block text-sm font-medium text-gray-700">Tipo de Institución</label>
+            {{ form.tipo_institucion }}
+            {% if form.tipo_institucion.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.tipo_institucion.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.anio_egreso.id_for_label }}" class="block text-sm font-medium text-gray-700">Año de Egreso</label>
+            {{ form.anio_egreso }}
+            {% if form.anio_egreso.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.anio_egreso.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+          <div>
+            <label for="{{ form.direccion_institucion.id_for_label }}" class="block text-sm font-medium text-gray-700">Dirección de la IES</label>
+            {{ form.direccion_institucion }}
+            {% if form.direccion_institucion.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.direccion_institucion.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.institucion_distrito.id_for_label }}" class="block text-sm font-medium text-gray-700">Distrito</label>
+            {{ form.institucion_distrito }}
+            {% if form.institucion_distrito.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.institucion_distrito.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.institucion_provincia.id_for_label }}" class="block text-sm font-medium text-gray-700">Provincia</label>
+            {{ form.institucion_provincia }}
+            {% if form.institucion_provincia.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.institucion_provincia.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.institucion_departamento.id_for_label }}" class="block text-sm font-medium text-gray-700">Departamento</label>
+            {{ form.institucion_departamento }}
+            {% if form.institucion_departamento.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.institucion_departamento.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <!-- Postulación -->
+        <h3 class="text-xl font-semibold text-blue-700">Postulación</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="{{ form.programa_postula_primera_opcion.id_for_label }}" class="block text-sm font-medium text-gray-700">Primera Opción</label>
+            {{ form.programa_postula_primera_opcion }}
+            {% if form.programa_postula_primera_opcion.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.programa_postula_primera_opcion.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.programa_postula_segunda_opcion.id_for_label }}" class="block text-sm font-medium text-gray-700">Segunda Opción</label>
+            {{ form.programa_postula_segunda_opcion }}
+            {% if form.programa_postula_segunda_opcion.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.programa_postula_segunda_opcion.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.enterado_proceso_admision.id_for_label }}" class="block text-sm font-medium text-gray-700">¿Cómo se enteró del proceso?</label>
+            {{ form.enterado_proceso_admision }}
+            {% if form.enterado_proceso_admision.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.enterado_proceso_admision.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <!-- Código Voucher -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 items-center">
+          <div></div>
+          <div></div>
+          <div class="flex justify-center">
+            <img src="https://iestparib.edu.pe/wp-content/uploads/2024/03/WhatsApp-Image-2023-04-04-at-16.01.13.jpeg" alt="Ejemplo de Documento" class="h-64 object-contain">
+          </div>
+          <div>
+            <label for="{{ form.codigo_voucher.id_for_label }}" class="block text-sm font-medium text-gray-700">Código Voucher</label>
+            {{ form.codigo_voucher }}
+            {% if form.codigo_voucher.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.codigo_voucher.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <!-- Documentos -->
+        <h3 class="text-xl font-semibold text-blue-700">Documentos</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="{{ form.dni_file.id_for_label }}" class="block text-sm font-medium text-gray-700">Copia de DNI</label>
+            {{ form.dni_file }}
+            {% if form.dni_file.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.dni_file.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.certificado_file.id_for_label }}" class="block text-sm font-medium text-gray-700">Certificado de Estudios</label>
+            {{ form.certificado_file }}
+            {% if form.certificado_file.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.certificado_file.errors }}</p>
+            {% endif %}
+          </div>
+          <div>
+            <label for="{{ form.recibo_file.id_for_label }}" class="block text-sm font-medium text-gray-700">Recibo de Pago</label>
+            {{ form.recibo_file }}
+            {% if form.recibo_file.errors %}
+              <p class="text-red-500 text-xs italic">{{ form.recibo_file.errors }}</p>
+            {% endif %}
+          </div>
+        </div>
+        
+        <hr class="my-4 border-gray-300">
+        <p class="text-sm text-gray-700">
+          Declaro bajo juramento que los datos consignados en la presente FICHA DE INSCRIPCIÓN son verídicos y me remito para la confrontación con los documentos originales. De no ser correctos, pierdo la vacante de admisión y renuncio a todo derecho que pueda obtener.
+        </p>
+        <hr class="my-4 border-gray-300">
+        
+        <div class="flex justify-center">
+          <button type="submit" class="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700">Registrarse</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

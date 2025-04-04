@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  ADMISIÓN 2024
+{% endblock title %}
+
+{% block content %}
+<div class="container mx-auto px-4">
+  <div class="mt-8 flex justify-center">
+    <div class="bg-white shadow rounded-lg w-full max-w-md">
+      <!-- Encabezado de la tarjeta -->
+      <div class="bg-gray-100 rounded-t-lg p-4">
+        <div class="flex justify-center">
+          <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+            <strong>Registro Satisfactorio</strong>
+          </button>
+        </div>
+      </div>
+      <!-- Cuerpo de la tarjeta -->
+      <div class="p-6 text-center">
+        <h5 class="text-xl font-semibold mb-2">Validar su inscripción</h5>
+        <hr class="border-gray-300 my-4">
+        <ol class="list-decimal list-inside text-left space-y-2">
+          <li>Revisar la bandeja de entrada o <strong>SPAM</strong> de su correo electrónico.</li>
+          <li>Debe visualizar el mensaje de confirmación de inscripción por parte del correo <strong>admision@iestparib.edu.pe</strong>.</li>
+          <li>Se le adjunta la ficha de postulante.</li>
+          <!-- <li>Estaremos validando el voucher de pago mientras se genera su ficha de inscripción.</li> -->
+        </ol>
+      </div>
+      <!-- Si se requiere un footer, se puede agregar aquí -->
+      <!--
+      <div class="bg-gray-100 rounded-b-lg p-4 text-sm text-gray-600">
+        <strong>NOTA: La ficha de inscripción (.pdf) se enviará a su correo en un lapso de 10 min.</strong>
+      </div>
+      -->
+    </div>
+  </div>
+</div>
+{% endblock content %}
