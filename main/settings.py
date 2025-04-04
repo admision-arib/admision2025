@@ -155,6 +155,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR, 'client_secrets.json')
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = config('GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE')
 
 # Configuración de Email
 EMAIL_BACKEND = config('EMAIL_BACKEND')
